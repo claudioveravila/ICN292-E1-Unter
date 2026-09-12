@@ -218,20 +218,20 @@ Se realizó una primera instancia de levantamiento en modalidad informal. La ent
 
 \subsection{Problema de negocio}
 
-La alta dependencia de procesos manuales y descentralizados para la gestión de consultas de clientes, prospección comercial y administración técnica, provoca tiempos de respuesta prolongados, fuga de oportunidades de venta y una alta inconsistencia en la información entregada, afectando directamente la calidad del servicio y la escalabilidad del modelo de negocio.
+Hoy Unter gestiona las consultas de clientes, la prospección comercial y la administración técnica de forma manual y sin un sistema que logre centralizar toda la información. Esto genera respuestas lentas, oportunidades de venta que se pierden por el camino e información poco consistente, lo que termina afectando tanto la calidad del servicio como la capacidad de la empresa para crecer.
 
 \subsubsection*{Impacto}
 
 \begin{itemize}
-\item \textbf{Tiempo:} elevada carga de horas-hombre invertidas en tareas de búsqueda, rescate de información dispersa y coordinación manual entre Jani y Ariel, lo que eleva el costo operativo por transacción y reduce el tiempo disponible para gestión estratégica.
-\item \textbf{Costo:} lucro cesante significativo por la fuga de oportunidades de venta ante tiempos de respuesta prolongados y la ineficiencia en el despliegue de esfuerzos comerciales reactivos.
-\item \textbf{Error:} riesgo crítico de desintermediación comercial al compartir documentación original de proveedores, y alta probabilidad de entregar especificaciones inconsistentes o desactualizadas por falta de un repositorio técnico normalizado.
-\item \textbf{Servicio:} degradación de la experiencia del cliente final debido a una atención fragmentada, tiempos de espera inciertos y ausencia de trazabilidad en el ciclo completo de consulta y venta.
+\item \textbf{Tiempo:} buena parte de las horas de Jani y Ariel se va en buscar información dispersa y en coordinarse manualmente entre ellos. Eso encarece cada operación y les deja menos tiempo para dedicarlo a la gestión estratégica del negocio.
+\item \textbf{Costo:} se pierde dinero que se podría estar ganando, porque las oportunidades de venta se escapan cuando las respuestas tardan demasiado y los esfuerzos comerciales se hacen de forma reactiva y poco eficiente.
+\item \textbf{Error:} al compartir la documentación original de los proveedores existe el riesgo de que el cliente termine comprándole directamente a ellos, y no a Unter. Además, sin un repositorio técnico ordenado, es muy fácil entregar especificaciones inconsistentes o desactualizadas.
+\item \textbf{Servicio:} la experiencia del cliente empeora, porque la atención está dividida entre varias personas, los tiempos de espera son impredecibles y no hay forma de hacer seguimiento a todo el ciclo de consulta y venta de principio a fin.
 \end{itemize}
 
 \subsubsection*{Indicadores del problema}
 
-Los siguientes indicadores cuantifican el problema descrito y constituyen la línea base sobre la cual se medirán los KPI de la Entrega 2.
+Los siguientes indicadores le ponen números al problema que describimos y sirven como punto de partida sobre el cual mediremos los KPI en la Entrega 2.
 
 \begin{table}[H]
 \centering
@@ -253,10 +253,10 @@ Tiempo empleado en elaborar una ficha & 20 min & Entrevista \\
 
 \subsection{Objetivo del SIG propuesto}
 
-Implementar un sistema de información que automatice la atención de consultas de clientes, la prospección comercial y la normalización de la documentación técnica, de modo que la respuesta a un cliente deje de depender de la disponibilidad y la memoria de una persona específica y pase a depender de un dato registrado y trazable.
+Implementar un sistema de información que automatice la atención de consultas de clientes, la prospección comercial y la normalización de la documentación técnica, de manera que responderle a un cliente ya no dependa de si una persona en particular está disponible o se acuerda de algo, sino de un dato registrado al que se le puede hacer seguimiento.
 
 \medskip
-\noindent\textbf{Meta de desempeño:} reducir en un 30\,\% el tiempo promedio de respuesta y la carga operativa asociada, garantizando la escalabilidad de la operación sin aumentar la dotación actual de dos personas. La verificación de esta meta se realizará en la Entrega 2 contra la línea base levantada en la tabla de indicadores anterior.
+\noindent\textbf{Meta de desempeño:} reducir en un 30\,\% el tiempo promedio de respuesta y la carga de trabajo que conlleva, de manera que la operación pueda crecer sin necesidad de sumar más personas a las dos que hay hoy. Esta meta se verificará en la Entrega 2 comparándola con la línea base que levantamos en la tabla de indicadores anterior.
 
 %==============================================================
 \section{Requerimientos desde cero}
@@ -316,7 +316,7 @@ Generador de fichas técnicas & Generación de borradores de fichas técnicas co
 
 \subsection{Requisitos funcionales}
 
-Los requisitos se presentan ordenados por prioridad descendente, donde 1 corresponde a la mayor prioridad. La columna \textit{Razón} explicita la trazabilidad de cada requisito con el problema levantado.
+Los requisitos se presentan ordenados por prioridad descendente, donde 1 corresponde a la mayor prioridad. La columna Razón muestra cómo se conecta cada requisito con el problema que levantamos.
 
 \begin{table}[H]
 \centering
@@ -369,43 +369,42 @@ Los requisitos se presentan ordenados por prioridad descendente, donde 1 corresp
 %==============================================================
 \section{Procesos BPMN}
 
-Se modelaron los tres procesos críticos del caso, cada uno en su versión as-is y to-be. Los entes son dos personas dentro de Unter y el sistema propuesto. La regla de asignación es única: lo que involucra dinero, condiciones comerciales o negociación con proveedores queda en finanzas y proveedores; todo lo demás queda en operaciones. Por eso la generación de fichas técnicas, que es un trámite documental y no una negociación, transcurre completa en operaciones. Al ser una empresa de dos personas, no existe un tercer nivel de escalamiento.
+Modelamos los tres procesos críticos del caso, cada uno en su versión as-is y to-be. Los participantes son las dos personas de Unter y el sistema propuesto. La regla para repartir el trabajo es simple: todo lo que tenga que ver con dinero, condiciones comerciales o negociación con proveedores queda en finanzas y proveedores, y el resto queda en operaciones. Por eso la generación de fichas técnicas, que es un trámite de documentos y no una negociación, ocurre completamente en operaciones. Como es una empresa de solo dos personas, no hay un tercer nivel al cual escalar.
 
 En los diagramas as-is el carril del sistema no existe, y esa ausencia es el diagnóstico.
 
 \subsection{Atención de consultas de clientes}
 
-Hoy la consulta entra por el canal que el cliente tenga a mano y se resuelve según quién la reciba y qué recuerde. Cuando el dato no está, se consulta al proveedor y el cliente queda esperando sin plazo. Nada se registra, así que la misma consulta se vuelve a resolver desde cero.
+Hoy la consulta entra por el canal que el cliente tenga a mano y se resuelve según quién la reciba y qué alcance a recordar. Cuando falta el dato, hay que preguntarle al proveedor y el cliente queda esperando sin un plazo claro. Como nada queda registrado, esa misma consulta se termina resolviendo de nuevo desde cero la próxima vez.
 
-En el to-be el chat es la entrada única: el asistente lee la consulta, revisa la base y responde cuando la información es suficiente. Si no lo es, recopila lo disponible, genera el aviso y deriva al gestor comercial con el contexto ya armado.
+En el to-be el chat pasa a ser la única entrada: el asistente lee la consulta, revisa la base y responde cuando tiene la información suficiente. Si no la tiene, junta lo que hay disponible, genera el aviso y le pasa el caso al gestor comercial con todo el contexto ya armado.
 
 Los diagramas as-is y to-be de este proceso están en las figuras~\ref{fig:aten-asis} y~\ref{fig:aten-tobe} del Anexo~\ref{anexo:bpmn}.
 
 \subsection{Búsqueda de clientes}
 
-La prospección actual es manual y sin memoria: se busca a mano, se escribe cada mensaje desde cero y el resultado queda anotado en una planilla o en ninguna parte. No hay registro de a quién ya se contactó.
+La prospección hoy es manual y sin memoria. Se busca a mano, se escribe cada mensaje desde cero y el resultado termina anotado en una planilla o simplemente en ninguna parte. Tampoco queda registro de a quién ya se contactó.
 
-El to-be convierte esa búsqueda en una campaña con criterios explícitos. El sistema recopila y guarda los datos de contacto con su origen, califica a los prospectos y entrega la lista al gestor comercial. \textbf{El envío del primer contacto sigue siendo manual}: el sistema prepara, la persona decide y envía.
+En el to-be esa búsqueda se transforma en una gestión ordenada con criterios definidos. El sistema recopila y guarda los datos de contacto junto con su origen, califica a los prospectos y le entrega la lista al gestor comercial. El envío del primer contacto sigue siendo manual, ya que el sistema prepara todo, pero es la persona quien decide y envía.
 
 Los diagramas as-is y to-be de este proceso están en las figuras~\ref{fig:busq-asis} y~\ref{fig:busq-tobe} del Anexo~\ref{anexo:bpmn}.
 
 \subsection{Fichas técnicas}
 
-La generación de fichas es un proceso interno: no lo dispara el cliente. Hoy tiene dos puntos de partida desconectados. Cuando entra un producto nuevo al inventario, el documento del proveedor se guarda en un correo o una carpeta y ahí termina, de modo que el producto queda en el catálogo sin ficha propia. Y cuando internamente se necesita la ficha, alguien busca ese documento, se lo pide al proveedor si no lo encuentra, y la arma a mano en PowerPoint. Esa ficha se usa para la consulta puntual que la motivó y después se desecha: no queda en el catálogo ni en ningún repositorio, así que el trabajo se repite entero la próxima vez que alguien pregunte por el mismo producto.
+La generación de fichas es un proceso interno, no lo inicia el cliente. Hoy tiene dos puntos de partida que están desconectados entre sí. Cuando entra un producto nuevo al inventario, el documento del proveedor se guarda en un correo o una carpeta y ahí queda, así que el producto entra al catálogo sin una ficha propia. Y cuando después se necesita esa ficha, alguien tiene que buscar el documento, pedírselo al proveedor si no lo encuentra, y armarla a mano en PowerPoint. Esa ficha se usa solo para la consulta puntual que la motivó y después se descarta, porque no queda ni en el catálogo ni en ningún repositorio. El resultado es que todo el trabajo se repite de nuevo la próxima vez que alguien pregunta por el mismo producto.
 
-El to-be convierte eso en un creador de fichas semi-automático que trabaja sobre el inventario y no sobre las consultas. Tiene dos disparadores: uno automático, cuando se agrega un producto nuevo, y uno a pedido, cuando operaciones lanza una revisión periódica para generar de una vez todas las fichas faltantes. Desde ahí el sistema detecta los productos sin ficha Unter, busca la documentación del proveedor, extrae y normaliza los atributos, y genera la ficha. \textbf{La parte semi del semi-automático es la aprobación}: ninguna ficha se publica sin que operaciones la revise. Si falta documentación, operaciones se la solicita al proveedor y el producto queda marcado como sin respaldo. El ciclo se repite hasta que no queden productos por procesar, de modo que el catálogo tiende a estar siempre con sus fichas al día.
-
+El to-be transforma eso en un creador de fichas semi-automático que trabaja sobre el inventario y no sobre las consultas. Tiene dos formas de activarse, una automática, cuando se agrega un producto nuevo, y otra a pedido, cuando operaciones lanza una revisión periódica para generar de una vez todas las fichas que falten. A partir de ahí el sistema detecta los productos que no tienen ficha Unter, busca la documentación del proveedor, extrae y ordena los atributos, y genera la ficha. La aprobación siempre queda en manos de una persona, ya que ninguna ficha se publica sin que operaciones la revise primero. Si falta documentación, operaciones se la pide al proveedor y el producto queda marcado como sin respaldo. El ciclo se repite hasta que no queden productos pendientes, de modo que el catálogo tiende a estar siempre con sus fichas al día.
 Los diagramas as-is y to-be de este proceso están en las figuras~\ref{fig:fich-asis} y~\ref{fig:fich-tobe} del Anexo~\ref{anexo:bpmn}.
 
 \subsection{Mejoras que introduce el SIG}
 
-\textbf{Qué se automatiza.} La recepción y clasificación de consultas, la búsqueda de la respuesta en la base, la recopilación y deduplicación de prospectos, y la extracción y normalización de los atributos técnicos del documento del proveedor. Son las tareas que hoy consumen tiempo de dos personas sin aportar criterio.
+\textbf{Qué se automatiza.} La recepción y clasificación de las consultas, la búsqueda de la respuesta en la base, la recopilación de prospectos y la eliminación de los repetidos, y la extracción y ordenamiento de los atributos técnicos del documento del proveedor. Son todas tareas que hoy les consumen tiempo a las dos personas sin que aporten criterio real.
 
-\textbf{Qué se controla.} El plazo de las derivaciones, el seguimiento de los prospectos sin respuesta, y qué productos del catálogo no tienen ficha propia. En el as-is nada de esto tiene control: depende de que alguien se acuerde.
+\textbf{Qué se controla.} El plazo de las derivaciones, el seguimiento de los prospectos que no han respondido, y qué productos del catálogo se quedaron sin ficha propia. En el as-is nada de esto está controlado, porque todo depende de que alguien se acuerde.
 
-\textbf{Qué se mide.} Consultas recibidas y resueltas por el asistente, tiempo de respuesta promedio y peor caso, prospectos contactados y convertidos, y cobertura de fichas propias sobre el catálogo. Ninguno de estos indicadores existe hoy, y son la línea base de los KPI de la Entrega 2.
+\textbf{Qué se mide.} Las consultas que recibe y resuelve el asistente, el tiempo de respuesta promedio y el del peor caso, los prospectos contactados y los que se convirtieron, y cuánto del catálogo alcanza a tener ficha propia. Ninguno de estos indicadores existe hoy, y son justamente la línea base de los KPI de la Entrega 2.
 
-\textbf{Qué no cambia.} Las decisiones siguen siendo humanas: el sistema prepara, prioriza y registra, pero la aprobación de una ficha y el envío de un primer contacto los hace una persona.
+\textbf{Qué no cambia.} Las decisiones las siguen tomando las personas. El sistema prepara, prioriza y registra, pero aprobar una ficha y enviar un primer contacto siempre queda en manos de alguien.
 
 %==============================================================
 \section{Modelo de datos preliminar (ER)}
